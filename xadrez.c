@@ -28,8 +28,8 @@ void imprimirTabuleiro(int startRow, int startCol, int endRow, int endCol) {
         printf("\n\n");
     }
 
-    printf("Posição inicial: %c%d\n", 'A' + startCol, 8 - startRow);
-    printf("Posição final:   %c%d\n", 'A' + endCol, 8 - endRow);
+    printf("Posicao inicial (o): %c%d\n", 'A' + startCol, 8 - startRow);
+    printf("Posicao final (x):   %c%d\n", 'A' + endCol, 8 - endRow);
 }
 
 void movimentos() {
@@ -40,7 +40,7 @@ void movimentos() {
         int endRow = -1, endCol = -1;
         int casas, peca, direcao;
 
-        printf("\nEscolha uma peça para testar o movimento:\n");
+        printf("\nEscolha uma peca para testar o movimento:\n");
         printf("1 - Bispo\n");
         printf("2 - Torre\n");
         printf("3 - Rainha\n");
@@ -49,37 +49,37 @@ void movimentos() {
 
         switch (peca) {
         case 1: // Bispo
-            printf("\nMovimentos válidos: diagonais\n");
+            printf("\nMovimentos validos: diagonais\n");
             printf("1 - Cima Direita\n2 - Cima Esquerda\n3 - Baixo Direita\n4 - Baixo Esquerda\n");
-            printf("Escolha a direção: ");
+            printf("Escolha a direcao: ");
             scanf("%d", &direcao);
             break;
 
         case 2: // Torre
-            printf("\nMovimentos válidos: verticais e horizontais\n");
+            printf("\nMovimentos validos: verticais e horizontais\n");
             printf("1 - Cima\n2 - Baixo\n3 - Direita\n4 - Esquerda\n");
-            printf("Escolha a direção: ");
+            printf("Escolha a direcao: ");
             scanf("%d", &direcao);
             break;
 
         case 3: // Rainha
-            printf("\nMovimentos válidos: diagonais, verticais e horizontais\n");
+            printf("\nMovimentos validos: diagonais, verticais e horizontais\n");
             printf("1 - Cima\n2 - Baixo\n3 - Direita\n4 - Esquerda\n");
             printf("5 - Cima Direita\n6 - Cima Esquerda\n7 - Baixo Direita\n8 - Baixo Esquerda\n");
-            printf("Escolha a direção: ");
+            printf("Escolha a direcao: ");
             scanf("%d", &direcao);
             break;
 
         case 4: // Cavalo
-            printf("\nMovimentos válidos do cavalo:\n");
+            printf("\nMovimentos validos do cavalo:\n");
             printf("1 - 2 cima, 1 direita\n2 - 2 cima, 1 esquerda\n3 - 2 baixo, 1 direita\n4 - 2 baixo, 1 esquerda\n");
             printf("5 - 1 cima, 2 direita\n6 - 1 cima, 2 esquerda\n7 - 1 baixo, 2 direita\n8 - 1 baixo, 2 esquerda\n");
-            printf("Escolha a direção: ");
+            printf("Escolha a direcao: ");
             scanf("%d", &direcao);
             break;
 
         default:
-            printf("Peça inválida.\n");
+            printf("Peca invalida.\n");
             continue;
         }
 
@@ -88,7 +88,7 @@ void movimentos() {
             scanf("%d", &casas);
         }
 
-        // Cálculo de movimento
+        // Calculo de movimento
         switch (peca) {
         case 1: // Bispo
             switch (direcao) {
@@ -96,7 +96,7 @@ void movimentos() {
                 case 2: endRow = startRow - casas; endCol = startCol - casas; break;
                 case 3: endRow = startRow + casas; endCol = startCol + casas; break;
                 case 4: endRow = startRow + casas; endCol = startCol - casas; break;
-                default: printf("Direção inválida.\n"); continue;
+                default: printf("Direcao invalida.\n"); continue;
             }
             break;
 
@@ -106,7 +106,7 @@ void movimentos() {
                 case 2: endRow = startRow + casas; endCol = startCol; break;
                 case 3: endRow = startRow; endCol = startCol + casas; break;
                 case 4: endRow = startRow; endCol = startCol - casas; break;
-                default: printf("Direção inválida.\n"); continue;
+                default: printf("Direcao invalida.\n"); continue;
             }
             break;
 
@@ -120,7 +120,7 @@ void movimentos() {
                 case 6: endRow = startRow - casas; endCol = startCol - casas; break;
                 case 7: endRow = startRow + casas; endCol = startCol + casas; break;
                 case 8: endRow = startRow + casas; endCol = startCol - casas; break;
-                default: printf("Direção inválida.\n"); continue;
+                default: printf("Direcao invalida.\n"); continue;
             }
             break;
 
@@ -134,19 +134,19 @@ void movimentos() {
                 case 6: endRow = startRow - 1; endCol = startCol - 2; break;
                 case 7: endRow = startRow + 1; endCol = startCol + 2; break;
                 case 8: endRow = startRow + 1; endCol = startCol - 2; break;
-                default: printf("Direção inválida.\n"); continue;
+                default: printf("Direcao invalida.\n"); continue;
             }
             break;
         }
 
-        // Validação de tabuleiro
+        // Validacao de tabuleiro
         if (endRow < 0 || endRow >= TABULEIRO_TAM || endCol < 0 || endCol >= TABULEIRO_TAM) {
-            printf("Movimento inválido! A peça saiu do tabuleiro.\n");
+            printf("Movimento invalido! A peca saiu do tabuleiro.\n");
         } else {
             imprimirTabuleiro(startRow, startCol, endRow, endCol);
         }
 
-        printf("\nDeseja tentar novamente? (1 - Sim / 0 - Não): ");
+        printf("\nDeseja tentar novamente? (1 - Sim / 0 - Nao): ");
         scanf("%d", &continuar);
     }
 }
@@ -155,3 +155,4 @@ int main(void) {
     movimentos();
     return 0;
 }
+
